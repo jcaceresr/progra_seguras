@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = ".";
+
+message TransferMessage {
+  string nro_cliente_origen = 1;
+  string nro_cliente_destino = 2;
+  float monto = 3;
+  string divisa = 4;
+  string tipo_operacion = 5;
+}
+
+service TransferService {
+  rpc SendTransfer(TransferMessage) returns (TransferResponse) {}
+}
+
+message TransferResponse {
+  string status = 1;
+}
